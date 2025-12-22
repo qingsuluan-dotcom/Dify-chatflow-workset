@@ -1,0 +1,303 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 小红书读书卡片
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/siliconflow:0.0.38@4795747d4fca05fee9daf34b1bcc110ffbbfcd9112f5f9e914f90b8b5dd549e5
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/zhipuai:0.0.22@ea24db55e0c838c881b3d7f7aa9a9af5f01471753978d751807acec6fd3ca5de
+    version: null
+kind: app
+version: 0.5.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: start
+        targetType: llm
+      id: 1766321787957-llm
+      selected: true
+      source: '1766321787957'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: llm-source-1766322985562-target
+      selected: true
+      source: llm
+      sourceHandle: source
+      target: '1766322985562'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1766322985562-source-1766323399843-target
+      selected: true
+      source: '1766322985562'
+      sourceHandle: source
+      target: '1766323399843'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: 用户输入
+        type: start
+        variables: []
+      height: 72
+      id: '1766321787957'
+      position:
+        x: 94.28571428571428
+        y: 127.85714285714286
+      positionAbsolute:
+        x: 94.28571428571428
+        y: 127.85714285714286
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        memory:
+          query_prompt_template: 根据书名{{#sys.query#}}完成书籍介绍
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            web_search: true
+          mode: chat
+          name: glm-4.6
+          provider: langgenius/zhipuai/zhipuai
+        prompt_template:
+        - id: e5145387-aefc-4dd3-94da-001a6eebb93a
+          role: system
+          text: 根据用户输入的书名，搜索书籍介绍
+        selected: false
+        title: LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: llm
+      position:
+        x: 417.7142857142858
+        y: 122.71428571428572
+      positionAbsolute:
+        x: 417.7142857142858
+        y: 122.71428571428572
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params: {}
+          mode: chat
+          name: deepseek-ai/DeepSeek-V3
+          provider: langgenius/siliconflow/siliconflow
+        prompt_template:
+        - id: f141a5ac-f6d3-45e9-b16f-ad06e78ff9cc
+          role: system
+          text: '## 角色定位
+
+            你是一位专业的网页设计师与前端开发专家，擅长根据需求快速生成美观、响应式的HTML卡片页面代码。卡片需要适配手机尺寸，一般以iphone15尺寸为准。
+
+
+            ## 核心能力
+
+            1. 能根据用户需求生成完整的HTML5页面结构
+
+            2. 使用Bento Grid风格的视觉设计
+
+            3. 掌握色彩搭配与UI设计原则
+
+            4. 能实现响应式设计适配不同设备
+
+            5. 熟悉常用设计风格(极简/拟物/毛玻璃等)
+
+            6. 强调超大字体或数字突出核心要点，画面中有超大视觉元素强调重点，与小元素的比例形成反差
+
+            7. 中英文混用，中文大字体粗体，英文小字作为点缀
+
+            8. 简洁的勾线图形化作为数据可视化或者配图元素
+
+            9. 运用高亮色自身透明度渐变制造科技感，但是不同高亮色不要互相渐变
+
+            10. 使用 Framer Motion （通过CDN引入）
+
+            11. 使用HTML5、TailwindCSS 3.0+（通过CDN引入）和必要的JavaScript
+
+            12. 使用专业图标库如Font Awesome或Material Icons（通过CDN引入）
+
+            13. 避免使用emoji作为主要图标
+
+            14. 不要省略内容要点
+
+
+            ## 知识储备
+
+            - 最新HTML5/CSS3标准
+
+            - 主流UI框架设计规范
+
+            - WCAG无障碍标准
+
+            - 色彩心理学基础
+
+            - 排版设计原则
+
+
+            ## 输出要求
+
+            1. 务必满足生成适合手机尺寸的HTML卡片页面，卡片宽度写死393px
+
+            2. 提供完整的HTML文件代码
+
+            3. 包含内联CSS样式
+
+            4. 使用语义化标签
+
+            5. 添加必要的meta标签
+
+            6. 确保代码整洁规范
+
+            7. 遵循W3C标准
+
+            8. 注意只输出HTML代码，不包含其他内容！！！注意只生成一段完整的HTML代码，不要输出多段。
+
+            9. 落款中加入 © 2025 Deepseek & BreaklmLab的标识
+
+
+            ## 交互方式
+
+            请用户提供:
+
+            1. 页面用途(企业官网/个人博客/产品展示等)
+
+            2. 期望的设计风格
+
+            3. 需要包含的主要内容区块
+
+            4. 品牌色/偏好色(可选)
+
+            5. 其他特殊需求'
+        - id: 614973a0-add2-460e-bdc4-0f495e810a79
+          role: user
+          text: 你需要根据{{#llm.text#}}以及{{#sys.query#}}}图书介绍生成书籍介绍卡片
+        selected: false
+        title: LLM 2
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1766322985562'
+      position:
+        x: 724.0000000000002
+        y: 122.71428571428572
+      positionAbsolute:
+        x: 724.0000000000002
+        y: 122.71428571428572
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1766322985562.text#}}'
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 102
+      id: '1766323399843'
+      position:
+        x: 1043.1428571428573
+        y: 108.57142857142858
+      positionAbsolute:
+        x: 1043.1428571428573
+        y: 108.57142857142858
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: 37.203578715719274
+      y: 184.65845129553855
+      zoom: 0.7
+  rag_pipeline_variables: []
