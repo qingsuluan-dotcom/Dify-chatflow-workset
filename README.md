@@ -7,7 +7,7 @@
 - **双 LLM 协同架构**：
   - **LLM 1 (Search Engine)**: 负责联网搜索，精准抓取书名、作者、简介、封面图及评分。
   - **LLM 2 (Visual Designer)**: 接收结构化数据，实时构建符合审美、可交互的 HTML 代码。
-  ![chatflow sample](./chatflowsample.png)
+  ![Chatflow 截图](./chatflowsample.png)
 - **实时渲染**：配合 Dify Artifacts 功能，实现书籍卡片的一键生成与即时预览。
 - **自动化流**：无需手动查资料，只需输入一个书名。
 
@@ -23,8 +23,9 @@
 ## 🚀 如何使用
 
 1. 在 Dify 中导入本项目提供的 DSL 文件。
-2. 配置你的搜索工具 API 密钥（如 Serper 或 Google Search）。
-3. 在对话框输入书名，点击运行。
+   - **工作流文件**: [点击下载 小红书读书卡片.yml](./小红书读书卡片.yml)
+3. 配置你的搜索工具 API 密钥（如 Serper 或 Google Search）。
+4. 在对话框输入书名，点击运行。
 
 ## ⚠️ 常见问题排查
 
