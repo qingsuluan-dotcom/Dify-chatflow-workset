@@ -7,7 +7,7 @@
 - **双 LLM 协同架构**：
   - **LLM 1 (Search Engine)**: 负责联网搜索，精准抓取书名、作者、简介、封面图及评分。
   - **LLM 2 (Visual Designer)**: 接收结构化数据，实时构建符合审美、可交互的 HTML 代码。
-  - <img width="1181" height="254" alt="image" src="https://github.com/user-attachments/assets/82a13c29-85ba-4a57-85e7-c4079fb6b024" />
+  ![chatflow sample](./chatflow_sample.png)
 - **实时渲染**：配合 Dify Artifacts 功能，实现书籍卡片的一键生成与即时预览。
 - **自动化流**：无需手动查资料，只需输入一个书名。
 
