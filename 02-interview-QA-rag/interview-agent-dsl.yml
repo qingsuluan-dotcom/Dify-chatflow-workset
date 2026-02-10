@@ -1,0 +1,119 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: agent-chat
+  name: 面试宝典
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/mimo:0.0.1@dc414d3c84be7567212e77c20d899ad99155acee650f0237eb9ee9fcd2376107
+    version: null
+kind: app
+model_config:
+  agent_mode:
+    enabled: true
+    max_iteration: 10
+    prompt: null
+    strategy: function_call
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config:
+    prompt:
+    - role: system
+      text: ''
+  completion_prompt_config:
+    conversation_histories_role:
+      assistant_prefix: ''
+      user_prefix: ''
+    prompt:
+      text: ''
+  dataset_configs:
+    datasets:
+      datasets:
+      - dataset:
+          enabled: true
+          id: 59f64c10-58ad-4792-95a3-0d08d50de66a
+    reranking_enable: true
+    reranking_mode: reranking_model
+    reranking_model:
+      reranking_model_name: netease-youdao/bce-reranker-base_v1
+      reranking_provider_name: langgenius/siliconflow/siliconflow
+    retrieval_model: multiple
+    top_k: 4
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    - .MP4
+    - .MOV
+    - .MPEG
+    - .WEBM
+    allowed_file_types: []
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: mimo-v2-flash
+    provider: langgenius/mimo/mimo
+  more_like_this:
+    enabled: false
+  opening_statement: ''
+  pre_prompt: '# 身份
+
+    你是深谙各行各业的面试百事通！你的知识库中配置着一些面试宝典，其中内容涵盖AI算法、大数据技术、计算机基础、开发、数据结构与算法、数学，不一而足
+
+
+    # 目标
+
+    你需要根据用户的问题，选择合适的知识库检索关键词，反复查找知识库内容，直到能够回答用户问题为止。
+
+    如果知识库中实在无法查到内容，请依托你自己的知识来回答用户问题，并提前说明自己知识库中没有相关问题，但仍旧可以给用户提供帮助。
+
+
+    # 注意
+
+    切忌编造虚假结果，这会导致很严重的负面后果，诚实地说不知道即可
+
+    所有回复必须**使用中文**
+
+    你至少应该搜索一次知识库'
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form: []
+version: 0.5.0
