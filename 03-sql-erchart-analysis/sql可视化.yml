@@ -1,0 +1,631 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: sql可视化
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/echarts:0.0.1@e390de4320a5ab32ef24899983f84c31aa39e4690c7b294be11f2c10268c3a68
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/mimo:0.0.1@dc414d3c84be7567212e77c20d899ad99155acee650f0237eb9ee9fcd2376107
+    version: null
+kind: app
+version: 0.6.0
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: fe443565-77ce-4c0d-9b48-2d3550de7ff1
+    name: duankou
+    selector:
+    - env
+    - duankou
+    value: 3306
+    value_type: integer
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 50
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: template-transform
+      id: 1772791206935-source-1772791311155-target
+      source: '1772791206935'
+      sourceHandle: source
+      target: '1772791311155'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: agent
+      id: 1772791311155-source-1772791446753-target
+      source: '1772791311155'
+      sourceHandle: source
+      target: '1772791446753'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: agent
+        targetType: llm
+      id: 1772791446753-source-1772791723700-target
+      source: '1772791446753'
+      sourceHandle: source
+      target: '1772791723700'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: agent
+        targetType: llm
+      id: 1772791446753-source-1772791726355-target
+      source: '1772791446753'
+      sourceHandle: source
+      target: '1772791726355'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: agent
+        targetType: llm
+      id: 1772791446753-source-1772791728830-target
+      source: '1772791446753'
+      sourceHandle: source
+      target: '1772791728830'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: tool
+      id: 1772791723700-source-1772804395155-target
+      source: '1772791723700'
+      sourceHandle: source
+      target: '1772804395155'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: tool
+      id: 1772791726355-source-1772804395155-target
+      source: '1772791726355'
+      sourceHandle: source
+      target: '1772804395155'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1772791728830-source-1772807948203-target
+      source: '1772791728830'
+      sourceHandle: source
+      target: '1772807948203'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 1772804395155-source-1772807948203-target
+      source: '1772804395155'
+      sourceHandle: source
+      target: '1772807948203'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: 用户输入
+        type: start
+        variables: []
+      height: 72
+      id: '1772791206935'
+      position:
+        x: -102.98798667828106
+        y: 264.7533197402968
+      positionAbsolute:
+        x: -102.98798667828106
+        y: 264.7533197402968
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        selected: false
+        template: "表结构设计 ：\r\n- comments ：存储评论ID、查询内容和情绪分类\r\n- keywords ：存储唯一关键字及自增ID（确保关键字不重复）\r\
+          \n- comment_keywords ：多对多关联表，连接评论和关键字\r\n   \r\n三个表的基本信息\r\n1. comments表（评论表）\r\
+          \n字段名\r\n数据类型\r\n说明\r\n约束\r\ncomment_id\r\nINT\r\n评论ID（主键）\r\nPRIMARY KEY\r\
+          \nquery\r\nTEXT\r\n评论内容\r\nNOT NULL\r\nsentiment\r\nVARCHAR(20)\r\n情绪分类（积极/消极/中性）\r\
+          \nNOT NULL\r\n\r\n2. keywords表（关键字表）\r\n字段名\r\n数据类型\r\n说明\r\n约束\r\nkeyword_id\r\
+          \nINT\r\n关键字ID（主键）\r\nPRIMARY KEY\r\nkeyword\r\nVARCHAR(255)\r\n关键字内容\r\n\
+          NOT NULL, UNIQUE\r\n\r\n3. comment_keywords表（评论-关键字关联表）\r\n字段名\r\n数据类型\r\
+          \n说明\r\n约束\r\ncomment_id\r\nINT\r\n评论ID（外键）\r\nFOREIGN KEY\r\nkeyword_id\r\
+          \nINT\r\n关键字ID（外键）\r\nFOREIGN KEY\r\n\r\n复合主键\r\nPRIMARY KEY (comment_id,\
+          \ keyword_id)\r\n\r\n表关联关系\r\n- 一对多关系：一个评论可以对应多个关键字（通过comment_keywords表）\r\
+          \n- 一对多关系：一个关键字可以属于多个评论（通过comment_keywords表）\r\n- 多对多关系：comments表和keywords表通过comment_keywords表建立多对多关联\r\
+          \n  \r\n基本查询SQL案例\r\n\r\n1. 查询所有积极情绪的评论及其关键字\r\nSELECT \r\n  c.comment_id,\
+          \ \r\n  c.query AS comment_content, \r\n  GROUP_CONCAT(k.keyword SEPARATOR\
+          \ ', ') AS keywords\r\nFROM \r\n  comments c\r\nJOIN \r\n  comment_keywords\
+          \ ck ON c.comment_id = ck.comment_id\r\nJOIN \r\n  keywords k ON ck.keyword_id\
+          \ = k.keyword_id\r\nWHERE \r\n  c.sentiment = '积极'\r\nGROUP BY \r\n  c.comment_id,\
+          \ c.query;\r\n\r\n2. 统计各情绪类型的评论数量\r\nSELECT \r\n  sentiment, \r\n  COUNT(*)\
+          \ AS comment_count\r\nFROM \r\n  comments\r\nGROUP BY \r\n  sentiment;\r\
+          \n\r\n3. 查询出现频率最高的前10个关键字\r\nSELECT \r\n  k.keyword, \r\n  COUNT(ck.keyword_id)\
+          \ AS occurrence_count\r\nFROM \r\n  keywords k\r\nJOIN \r\n  comment_keywords\
+          \ ck ON k.keyword_id = ck.keyword_id\r\nGROUP BY \r\n  k.keyword\r\nORDER\
+          \ BY \r\n  occurrence_count DESC\r\nLIMIT 10;\r\n\r\n4. 查询包含特定关键字的所有评论\r\
+          \nSELECT \r\n  c.comment_id, \r\n  c.query AS comment_content, \r\n  c.sentiment\r\
+          \nFROM \r\n  comments c\r\nJOIN \r\n  comment_keywords ck ON c.comment_id\
+          \ = ck.comment_id\r\nJOIN \r\n  keywords k ON ck.keyword_id = k.keyword_id\r\
+          \nWHERE \r\n  k.keyword = '环保';"
+        title: 模板转换
+        type: template-transform
+        variables:
+        - value_selector:
+          - sys
+          - query
+          value_type: string
+          variable: arg1
+      height: 51
+      id: '1772791311155'
+      position:
+        x: 192.75223421228293
+        y: 276.61855629446865
+      positionAbsolute:
+        x: 192.75223421228293
+        y: 276.61855629446865
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        agent_parameters:
+          instruction:
+            type: constant
+            value: "你是数据库查询助手，根据用户输入命令调用工具查询数据库，查询的数据库为test，它包含的表结构:\n{output}\n\n\
+              根据输入分析，如果需要输出表格请组合成json输出\n\n\nx轴数据为类型，y轴数据为数值。数据之间需要用；隔开。请输出\n{\n \
+              \  \"xdata\":[\"a\";\"b\";\"c\";\"d\";\"e\"],\n   \"ydata\":[1;2;3;4;5]\n\
+              }"
+          model:
+            type: constant
+            value:
+              completion_params: {}
+              mode: chat
+              model: Pro/deepseek-ai/DeepSeek-V3
+              model_type: llm
+              provider: langgenius/siliconflow/siliconflow
+              type: model-selector
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: 数据库SQL查询工具。
+              parameters:
+                db_host:
+                  auto: 0
+                  value:
+                    type: mixed
+                    value: ''
+                db_name:
+                  auto: 0
+                  value:
+                    type: mixed
+                    value: null
+                db_password:
+                  auto: 0
+                  value:
+                    type: mixed
+                    value: null
+                db_port:
+                  auto: 0
+                  value:
+                    type: variable
+                    value:
+                    - env
+                    - duankou
+                db_properties:
+                  auto: 1
+                  value: null
+                db_type:
+                  auto: 0
+                  value:
+                    type: constant
+                    value: mssql
+                db_username:
+                  auto: 0
+                  value:
+                    type: mixed
+                    value: null
+                query_sql:
+                  auto: 1
+                  value: null
+              provider_name: junjiem/db_query/db_query
+              provider_show_name: junjiem/db_query/db_query
+              settings:
+                output_format:
+                  value:
+                    type: constant
+                    value: markdown
+              tool_description: 数据库SQL查询工具。
+              tool_label: SQL查询
+              tool_name: sql_query
+              type: builtin
+        agent_strategy_label: ReAct
+        agent_strategy_name: ReAct
+        agent_strategy_provider_name: langgenius/agent/agent
+        meta:
+          minimum_dify_version: 1.7.0
+          version: 0.0.2
+        output_schema: {}
+        plugin_unique_identifier: langgenius/agent:0.0.32@7ef46bd94ef1c858ab88617adf75da2729904296ecfbead9373d67d4eec10483
+        selected: false
+        title: Agent
+        tool_node_version: '2'
+        type: agent
+      height: 187
+      id: '1772791446753'
+      position:
+        x: 474.02633699502826
+        y: 276.61855629446865
+      positionAbsolute:
+        x: 474.02633699502826
+        y: 276.61855629446865
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: mimo-v2-flash
+          provider: langgenius/mimo/mimo
+        prompt_template:
+        - id: efe64ebe-aa2a-423c-853e-f7d1c511b9ac
+          role: system
+          text: '用户输入内容，将json中的y data值抽取出来。注意只输出抽取的数据结果。结果用分号分割。
+
+
+            例如输入的：
+
+            {
+
+            "xdata": ["消极"; "中性"; "积极"],
+
+            "ydata": [121; 133; 95]
+
+            }}
+
+
+            输出：
+
+            121; 133; 95
+
+
+            输入：
+
+            {agent/text}
+
+
+
+            输出：'
+        selected: false
+        title: LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1772791723700'
+      position:
+        x: 775.7138798993358
+        y: 85.24807520423434
+      positionAbsolute:
+        x: 775.7138798993358
+        y: 85.24807520423434
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: mimo-v2-flash
+          provider: langgenius/mimo/mimo
+        prompt_template:
+        - id: 4026a5ee-de7a-400f-8d4c-a93672fb4b47
+          role: system
+          text: '用户输入内容，将json中的x data值抽取出来。注意只输出抽取的数据结果。结果用分号分割。
+
+
+            例如输入的：
+
+            {
+
+            "xdata": ["消极"; "中性"; "积极"],
+
+            "ydata": [121; 133; 95]
+
+            }}
+
+
+            输出：
+
+            "消极"; "中性"; "积极"
+
+
+            输入：
+
+            {agent/text}
+
+
+            输出：'
+        selected: false
+        title: LLM 2
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1772791726355'
+      position:
+        x: 775.7138798993358
+        y: 264.03136781649374
+      positionAbsolute:
+        x: 775.7138798993358
+        y: 264.03136781649374
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: mimo-v2-flash
+          provider: langgenius/mimo/mimo
+        prompt_template:
+        - role: system
+          text: ''
+        selected: false
+        title: LLM 3
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1772791728830'
+      position:
+        x: 775.7138798993358
+        y: 456.375962397883
+      positionAbsolute:
+        x: 775.7138798993358
+        y: 456.375962397883
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: chart title
+            ja_JP: chart title
+            pt_BR: chart title
+            zh_Hans: 图表的标题
+          label:
+            en_US: title
+            ja_JP: title
+            pt_BR: title
+            zh_Hans: 标题
+          llm_description: chart title
+          max: null
+          min: null
+          name: title
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: data for generating chart, each number should be separated by ";"
+            ja_JP: data for generating chart, each number should be separated by ";"
+            pt_BR: data for generating chart, each number should be separated by ";"
+            zh_Hans: 用于生成柱状图的数据，每个数字之间用 ";" 分隔
+          label:
+            en_US: data
+            ja_JP: data
+            pt_BR: data
+            zh_Hans: 数据
+          llm_description: data for generating bar chart, data should be a string
+            contains a list of numbers like "1;2;3;4;5"
+          max: null
+          min: null
+          name: data
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: X axis for chart, each text should be separated by ";"
+            ja_JP: X axis for chart, each text should be separated by ";"
+            pt_BR: X axis for chart, each text should be separated by ";"
+            zh_Hans: 柱状图的 x 轴，每个文本之间用 ";" 分隔
+          label:
+            en_US: X Axis
+            ja_JP: X Axis
+            pt_BR: X Axis
+            zh_Hans: x 轴
+          llm_description: x axis for bar chart, x axis should be a string contains
+            a list of texts like "a;b;c;1;2" in order to match the data
+          max: null
+          min: null
+          name: x_axis
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          data: ''
+          title: ''
+          x_axis: ''
+        plugin_id: langgenius/echarts
+        plugin_unique_identifier: langgenius/echarts:0.0.1@e390de4320a5ab32ef24899983f84c31aa39e4690c7b294be11f2c10268c3a68
+        provider_icon: https://cloud.dify.ai/console/api/workspaces/current/plugin/icon?tenant_id=676a31d3-fb57-4dab-b25f-27b0422b6f98&filename=6502fc86791e68061d3ecf90357e15ab15189436fd63ff1bc2e08966dddbe4f3.svg
+        provider_id: langgenius/echarts/echarts
+        provider_name: langgenius/echarts/echarts
+        provider_type: builtin
+        selected: false
+        title: 柱状图
+        tool_configurations: {}
+        tool_description: 柱状图
+        tool_label: 柱状图
+        tool_name: bar_chart
+        tool_node_version: '2'
+        tool_parameters:
+          data:
+            type: mixed
+            value: null
+          title:
+            type: mixed
+            value: null
+          x_axis:
+            type: mixed
+            value: null
+        type: tool
+      height: 51
+      id: '1772804395155'
+      position:
+        x: 1195.149042633806
+        y: 264.03136781649374
+      positionAbsolute:
+        x: 1195.149042633806
+        y: 264.03136781649374
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1772804395155.text#}}{{#1772791728830.text#}}'
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 102
+      id: '1772807948203'
+      position:
+        x: 1195.149042633806
+        y: 463.4737030504079
+      positionAbsolute:
+        x: 1195.149042633806
+        y: 463.4737030504079
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: 174.9885108324504
+      y: 130.575891505711
+      zoom: 0.6568314588091733
+  rag_pipeline_variables: []
