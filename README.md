@@ -17,4 +17,4 @@
 ### 3️⃣ 📊 SQL智能分析可视化助手 (NL2SQL + ECharts)
 - **技术栈**: Dify Workflow, NL2SQL自然语言转SQL, ECharts动态图表生成, Schema知识库检索, 多轮对话澄清
 - **亮点**: 实现从自然语言到可执行SQL再到交互式图表的全链路自动化，内置SQL纠错与图表类型智能推荐，大幅降低数据分析门槛。
-- **[点击进入项目详情](./03-sql-ercharts-analysis)**
+- **[点击进入项目详情](./03-sql-erchart-analysis)**
