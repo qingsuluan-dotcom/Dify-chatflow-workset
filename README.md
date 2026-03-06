@@ -13,3 +13,8 @@
 - **技术栈**: Dify Workflow, 向量数据库embedding, 混合检索优化
 - **亮点**: 针对面试场景优化的ai/cv/cv基础的知识库检索，有效解决模型在垂直领域的幻觉，提升检索效率。
 - **[点击进入项目详情](./02-interview-QA-rag)**
+
+### 3️⃣ 📊 SQL智能分析可视化助手 (NL2SQL + ECharts)
+- **技术栈**: Dify Workflow, NL2SQL自然语言转SQL, ECharts动态图表生成, Schema知识库检索, 多轮对话澄清
+- **亮点**: 实现从自然语言到可执行SQL再到交互式图表的全链路自动化，内置SQL纠错与图表类型智能推荐，大幅降低数据分析门槛。
+- **[点击进入项目详情](./03-SQL-ECharts-Analytics)**
